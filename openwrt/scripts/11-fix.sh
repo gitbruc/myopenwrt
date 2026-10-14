@@ -19,5 +19,5 @@ sed -i 's/TARGET_CFLAGS += -flto/TARGET_CFLAGS += -flto -Wno-error/g' package/ne
 # fix packages_utils_containerd
 sed -i '/GO_PKG:=github.com\/containerd\/containerd/a GO_PKG_INSTALL_ALL:=1' feeds/packages/utils/containerd/Makefile
 
-# 将 fullconenat 中的 -D_INIT 替换为 __attribute__((constructor)) 以避免与 musl crti.o 的 _init 冲突
-find package/fcm/fullconenat -type f -exec sed -i 's/-D_INIT=libipt_FULLCONENAT_init/-D_init="__attribute__((constructor)) libipt_FULLCONENAT_init"/g' {} +
+# tailscale 换成openwrt主分支最新版
+curl -fsSL https://raw.githubusercontent.com/openwrt/packages/master/net/tailscale/Makefile -o feeds/packages/net/tailscale/Makefile
