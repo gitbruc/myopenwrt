@@ -15,3 +15,9 @@ curl -sL $mirror/openwrt/patch/natflow/999-fix-ipset-api-kernel-6.12.patch > pac
 
 # shadowsocksr-libev 忽略gcc16警告
 sed -i 's/TARGET_CFLAGS += -flto/TARGET_CFLAGS += -flto -Wno-error/g' package/new/helloworld/shadowsocksr-libev/Makefile
+
+# fix packages_utils_containerd
+sed -i '/GO_PKG:=github.com\/containerd\/containerd/a GO_PKG_INSTALL_ALL:=1' feeds/packages/utils/containerd/Makefile
+
+# 将 fullconenat 中的 -D_INIT 替换为 __attribute__((constructor)) 以避免与 musl crti.o 的 _init 冲突
+find package/fcm/fullconenat -type f -exec sed -i 's/-D_INIT=libipt_FULLCONENAT_init/-D_init="__attribute__((constructor)) libipt_FULLCONENAT_init"/g' {} +
