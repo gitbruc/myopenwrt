@@ -48,9 +48,31 @@ sed -i 's|admin/services|admin/control|' "feeds/luci/applications/luci-app-watch
 # control-wol
 sed -i 's|admin/services|admin/control|' "feeds/luci/applications/luci-app-wol/root/usr/share/luci/menu.d/luci-app-wol.json"
 # control-openappfilter---
-sed -i 's|"admin", "services"|"admin", "control"|g' "package/new/OpenAppFilter/luci-app-oaf/luasrc/controller/appfilter.lua"
-sed -i 's|"admin", "services"|"admin", "control"|g' "package/new/OpenAppFilter/luci-app-oaf/luasrc/model/cbi/appfilter/dev_status.lua"
-sed -i 's|admin/services|admin/control|g' "package/new/OpenAppFilter/luci-app-oaf/luasrc/view/admin_network/app_filter.htm"
+# 1. 修改 luasrc/controller/ 下的所有控制器路由 ("admin", "services" -> "admin", "control")
+sed -i 's|"admin", "services"|"admin", "control"|g' "package/new/OpenAppFilter/luci-app-oaf/luasrc/controller/oaf.lua"
+sed -i 's|"admin", "services"|"admin", "control"|g' "package/new/OpenAppFilter/luci-app-oaf/luasrc/controller/oaf_about.lua"
+sed -i 's|"admin", "services"|"admin", "control"|g' "package/new/OpenAppFilter/luci-app-oaf/luasrc/controller/oaf_advanced.lua"
+sed -i 's|"admin", "services"|"admin", "control"|g' "package/new/OpenAppFilter/luci-app-oaf/luasrc/controller/oaf_app_filter.lua"
+sed -i 's|"admin", "services"|"admin", "control"|g' "package/new/OpenAppFilter/luci-app-oaf/luasrc/controller/oaf_app_record.lua"
+sed -i 's|"admin", "services"|"admin", "control"|g' "package/new/OpenAppFilter/luci-app-oaf/luasrc/controller/oaf_dashboard.lua"
+sed -i 's|"admin", "services"|"admin", "control"|g' "package/new/OpenAppFilter/luci-app-oaf/luasrc/controller/oaf_feature.lua"
+sed -i 's|"admin", "services"|"admin", "control"|g' "package/new/OpenAppFilter/luci-app-oaf/luasrc/controller/oaf_internet_audit.lua"
+sed -i 's|"admin", "services"|"admin", "control"|g' "package/new/OpenAppFilter/luci-app-oaf/luasrc/controller/oaf_mac_filter.lua"
+sed -i 's|"admin", "services"|"admin", "control"|g' "package/new/OpenAppFilter/luci-app-oaf/luasrc/controller/oaf_user.lua"
+sed -i 's|"admin", "services"|"admin", "control"|g' "package/new/OpenAppFilter/luci-app-oaf/luasrc/controller/oaf_whitelist.lua"
+
+# 2. 修改 luasrc/view/oaf/ 下的视图模板 API 路径
+sed -i 's|"admin", "services"|"admin", "control"|g' "package/new/OpenAppFilter/luci-app-oaf/luasrc/view/oaf/whitelist.htm"
+sed -i 's|admin/services/oaf|admin/control/oaf|g' "package/new/OpenAppFilter/luci-app-oaf/luasrc/view/oaf/advanced.htm"
+sed -i 's|admin/services/oaf|admin/control/oaf|g' "package/new/OpenAppFilter/luci-app-oaf/luasrc/view/oaf/app_record.htm"
+sed -i 's|admin/services/oaf|admin/control/oaf|g' "package/new/OpenAppFilter/luci-app-oaf/luasrc/view/oaf/dashboard.htm"
+sed -i 's|admin/services/oaf|admin/control/oaf|g' "package/new/OpenAppFilter/luci-app-oaf/luasrc/view/oaf/feature.htm"
+sed -i 's|admin/services/oaf|admin/control/oaf|g' "package/new/OpenAppFilter/luci-app-oaf/luasrc/view/oaf/user_detail.htm"
+sed -i 's|admin/services/oaf|admin/control/oaf|g' "package/new/OpenAppFilter/luci-app-oaf/luasrc/view/oaf/user_status.htm"
+sed -i 's|admin/services/oaf|admin/control/oaf|g' "package/new/OpenAppFilter/luci-app-oaf/luasrc/view/oaf/app_filter/rules.htm"
+sed -i 's|admin/services/oaf|admin/control/oaf|g' "package/new/OpenAppFilter/luci-app-oaf/luasrc/view/oaf/mac_filter/rules.htm"
+sed -i 's|admin/services/oaf|admin/control/oaf|g' "package/new/OpenAppFilter/luci-app-oaf/luasrc/view/oaf/mac_filter/user.htm"
+
 # nas-samba4
 sed -i 's|admin/services|admin/nas|' "feeds/luci/applications/luci-app-samba4/root/usr/share/luci/menu.d/luci-app-samba4.json"
 # nas-webdav
