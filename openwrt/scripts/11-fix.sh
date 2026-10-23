@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # fix smartdns hash
-sed -i 's/\(PKG_MIRROR_HASH:=\).*/\1skip/' feeds/packages/net/smartdns/Makefile
-sed -i 's/\(MIRROR_HASH:=\).*/\1skip/' feeds/packages/net/smartdns/Makefile
+#sed -i 's/\(PKG_MIRROR_HASH:=\).*/\1skip/' feeds/packages/net/smartdns/Makefile
+#sed -i 's/\(MIRROR_HASH:=\).*/\1skip/' feeds/packages/net/smartdns/Makefile
 
 # rust
 #sed -i 's/$(PYTHON) $(HOST_BUILD_DIR)\/x.py/env -u CI -u GITHUB_ACTIONS $(PYTHON) $(HOST_BUILD_DIR)\/x.py --set llvm.download-ci-llvm=false/g' feeds/packages/lang/rust/Makefile
