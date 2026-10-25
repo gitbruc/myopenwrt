@@ -94,6 +94,10 @@ CONFIG_NGINX_STREAM_REAL_IP=y
 # CONFIG_PACKAGE_luci-app-fwx-user is not set
 # CONFIG_PACKAGE_luci-theme-fanchmwrt is not set
 
+### virtual machine
+CONFIG_PACKAGE_qemu-ga=y
+CONFIG_PACKAGE_virtio-console-helper=y
+
 ### APPS-custom
 CONFIG_PACKAGE_luci-app-bandix=y
 CONFIG_PACKAGE_luci-app-rtp2httpd=y
